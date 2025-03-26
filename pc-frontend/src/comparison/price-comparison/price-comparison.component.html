@@ -1,0 +1,64 @@
+<div class="price-comparison__container">
+  <mat-card>
+    <mat-card-header class="price-comparison__card-header"
+      >Porównanie oferty PGS</mat-card-header
+    >
+    <mat-card-content>
+      <div class="price-comparison__uploaders">
+        <product-comparison-file-import
+          productComparisonFileUploadMessage
+          [fileImportMessage]="'Wgraj plik z ofertą PGS.'"
+          class="price-comparison__upload-file"
+          (onFileAdd)="offerFilesAdded($event)"
+        />
+        <product-comparison-file-import
+          productComparisonFileUploadMessage
+          [fileImportMessage]="'Wgraj plik z aktualną bazą produktów PGS.'"
+          class="price-comparison__upload-file"
+          (onFileAdd)="currentPricesFileAdded($event)"
+        />
+      </div>
+      <div class="price-comparison__submit-button">
+        <button
+          mat-flat-button
+          type="button"
+          [disabled]="offerFiles.length === 0 || currentPricesFile.length === 0"
+          (click)="onFilesSubmit()"
+        >
+          Wykonaj porównanie
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header class="price-comparison__card-header"
+      >Podmiana produktów w katalogu PGS</mat-card-header
+    >
+    <mat-card-content>
+      <div class="price-comparison__uploaders">
+        <product-comparison-file-import
+          productComparisonFileUploadMessage
+          [fileImportMessage]="'Wgraj plik z wybranaymi produktami.'"
+          class="price-comparison__upload-file"
+          (onFileAdd)="selectedProductFilesAdded($event)"
+        />
+        <product-comparison-file-import
+          productComparisonFileUploadMessage
+          [fileImportMessage]="'Wgraj plik z aktualną bazą produktów PGS.'"
+          class="price-comparison__upload-file"
+          (onFileAdd)="currentPricesToSwapFileAdded($event)"
+        />
+      </div>
+      <div class="price-comparison__submit-button">
+        <button
+          mat-flat-button
+          type="button"
+          [disabled]="selectedPriceFile.length === 0 || currentPricesToSwapFile.length === 0"
+          (click)="onSwapFilesSubmit()"
+        >
+          Wykonaj podmianę produktów.
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<div class="file-import">
+  <ngx-file-drop
+    dropZoneLabel="Drop files here"
+    (onFileDrop)="dropped($event)"
+    [multiple]="multiple"
+    accept=".xlsx, .xls, .csv"
+    dropZoneClassName="file-import__ngx-file-drop"
+  >
+    <ng-template
+      ngx-file-drop-content-tmp
+      let-openFileSelector="openFileSelector"
+    >
+      <div class="file-import__file-box">
+        {{ fileImportMessage }}
+        <button class="file-import__button" mat-flat-button type="button" (click)="openFileSelector()">Wybierz pliki</button>
+      </div>
+    </ng-template>
+  </ngx-file-drop>
+  <div class="file-import__file-list">
+    <product-comparison-file-list [fileList]="displayFiles()" (onFileDelete)="deleteFile($event)"/>
+  </div>
+</div>

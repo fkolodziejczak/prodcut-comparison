@@ -1,0 +1,18 @@
+<table *ngIf="fileList && fileList.length > 0">
+  <tr>
+    <th>No.</th>
+    <th>Nazwa</th>
+    <th>Wielkość</th>
+    <th>Usuń</th>
+  </tr>
+  <tr *ngFor="let file of fileList; let i = index;">
+    <td>{{ i + 1 }}</td>
+    <td>{{ file.name }}</td>
+    <td>{{ file.size | fileSize }}</td>
+    <td>
+      <button mat-icon-button (click)="deleteFile(file)">
+        <mat-icon class="file-list__icon" aria-hidden="false" aria-label="Usuń" fontIcon="delete"/>
+      </button>
+    </td>
+  </tr>
+</table>

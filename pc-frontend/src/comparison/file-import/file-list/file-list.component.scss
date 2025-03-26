@@ -1,0 +1,18 @@
+@use "../../../styles";
+
+table {
+  border-collapse:separate;
+  background-color: styles.$light-shades;
+  border: 1px solid styles.$primary;
+  border-radius: 10px;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+.file-list__icon {
+  color: styles.$dark-shades;
+}

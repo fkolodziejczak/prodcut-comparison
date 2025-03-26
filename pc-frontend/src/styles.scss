@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use '../theme-colors' as theme;
+
+$primary: #968AA7;
+$primary-disabled: #aeacb3;
+$dark-accent: #86727C;
+$light-accent: #998469;
+$dark-shades: #49435A;
+$light-shades: #F6F6F6;
+
+html, body { height: 100%;  background-color: #eeedf1; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html {
+  @include mat.theme((
+    color: (
+      primary: theme.$primary-palette,
+      tertiary: theme.$tertiary-palette
+    )
+  ));
+}

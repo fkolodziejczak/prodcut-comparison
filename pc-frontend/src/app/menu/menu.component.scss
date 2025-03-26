@@ -1,0 +1,19 @@
+@use "styles";
+
+.menu__toolbar {
+  background-color: styles.$primary;
+  position:fixed;
+  top:0;
+  z-index: 1000;
+}
+
+.menu__header {
+  padding: 1rem;
+}
+
+.menu__expanded-menu {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

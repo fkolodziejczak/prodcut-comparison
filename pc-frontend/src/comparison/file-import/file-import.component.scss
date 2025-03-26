@@ -1,0 +1,33 @@
+@use "../../styles";
+
+.file-import {
+  justify-content: center;
+}
+
+.file-import__file-box {
+  align-items: center;
+  color: styles.$dark-shades;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.file-import__file-list {
+  padding-top: 1rem;
+}
+
+.file-import__button {
+  background-color: styles.$primary !important;
+}
+
+.file-import__ngx-file-drop {
+  height: 100px;
+  margin: auto;
+  border: 2px dotted styles.$dark-shades;
+  border-radius: 30px;
+}
+
+.file-import__ngx-content {
+  height: 100px;
+}

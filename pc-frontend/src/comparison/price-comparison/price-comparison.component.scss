@@ -1,0 +1,26 @@
+.price-comparison__submit-button {
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+}
+
+.price-comparison__uploaders {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.price-comparison__upload-file {
+  width: 100%;
+}
+
+.price-comparison__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.price-comparison__card-header{
+  padding-bottom: 2rem;
+}
