@@ -41,7 +41,7 @@ WORKDIR /product-comparison
 RUN npm install --production
 
 # Expose backend and frontend ports
-EXPOSE 80 3000
+EXPOSE 80 3003
 
 # Start both the Angular app and NestJS backend together
 CMD ["sh", "-c", "npm run start:prod --prefix /product-comparison && nginx -g 'daemon off;'"]
