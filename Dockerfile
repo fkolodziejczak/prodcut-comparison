@@ -36,7 +36,7 @@ COPY --from=angular-build /product-comparison/pc-frontend/dist/product-compariso
 FROM node:16 AS nestjs-runtime
 
 WORKDIR /product-comparison
-COPY --from=nestjs-build /product-comparison/pc-backend/product0-comparison /product-comparison
+COPY --from=nestjs-build /product-comparison/pc-backend/product-comparison /product-comparison
 WORKDIR /product-comparison
 RUN npm install --production
 
