@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # This is the multi-stage Dockerfile you wrote
+    container_name: fullstack-app
+    ports:
+      - "80:80"  # Frontend on port 80 (Nginx serves Angular)
+      - "3000:3000"  # Backend on port 3000 (NestJS)
+    environment:
+      NODE_ENV: production
+    networks:
+      - fullstack-network
+
+networks:
+  fullstack-network:
+    driver: bridge
