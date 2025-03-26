@@ -8,7 +8,7 @@ services:
     container_name: fullstack-app
     ports:
       - "80:80"  # Frontend on port 80 (Nginx serves Angular)
-      - "3000:3000"  # Backend on port 3000 (NestJS)
+      - "3003:3003"  # Backend on port 3000 (NestJS)
     environment:
       NODE_ENV: production
     networks:

@@ -18,7 +18,7 @@ FROM node:16 AS nestjs-build
 WORKDIR /product-comparison
 
 # Copy backend package.json and install dependencies
-COPY pc-backend/product-comparison/package*.json ./backend/
+COPY pc-backend/product-comparison/package*.json ./pc-backend/product-comparison/
 WORKDIR /product-comparison/pc-backend/product-comparison
 RUN npm install
 
