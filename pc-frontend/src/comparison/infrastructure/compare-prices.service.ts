@@ -6,10 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ComparePricesService {
+  backendUrl = 'http://localhost:3000';
+
   public readonly endpoints = {
-    comparePrices: `http://localhost:3003/price-comparison/comparePrices`,
-    downloadComparison: `http://localhost:3003/price-comparison/download`,
-    swapPrices: `http://localhost:3003/price-comparison/swapPrices`,
+    comparePrices: `${this.backendUrl}/price-comparison/comparePrices`,
+    downloadComparison: `${this.backendUrl}/price-comparison/download`,
+    swapPrices: `${this.backendUrl}/price-comparison/swapPrices`,
   };
   private http = inject(HttpClient);
 

@@ -56,15 +56,15 @@ COPY pc-backend/product-comparison/package*.json ./
 RUN npm install --only=production
 
 # ---- Frontend setup ----
-# Use Nginx to serve the frontend
-FROM nginx:latest AS final-nginx
+# Install Nginx to serve the frontend
+RUN apt-get update && apt-get install -y nginx
 
 # Copy the built Angular frontend from the frontend build stage into Nginx's default directory
 COPY --from=frontend-build /pc-frontend/dist/product-comparison/browser /usr/share/nginx/html
 
-# Expose the port for both frontend (via Nginx) and backend (via Node.js)
+# Expose the ports for both frontend (via Nginx) and backend (via Node.js)
 EXPOSE 80
 EXPOSE 3003
 
-# Run both services (Frontend via Nginx and Backend via Node.js)
-CMD ["node", "dist/main"]
+# Start both services (Backend via Node.js and Frontend via Nginx)
+CMD service nginx start && node dist/main

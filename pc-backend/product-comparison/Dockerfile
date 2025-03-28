@@ -5,19 +5,19 @@ FROM node:22 AS build
 WORKDIR /pc-backend
 
 # Copy package.json and package-lock.json first to install dependencies
-COPY pc-backend/product-comparison/package*.json ./
+COPY package*.json ./
 
 # Install backend dependencies
 RUN npm install
 
 # Copy the rest of the backend application
-COPY pc-backend/product-comparison/ .
+COPY . .
 
 # Build the NestJS app
 RUN npm run build
 
 # Use official Node.js image as the base for the runtime container
-FROM node:16
+FROM node:22
 
 # Set working directory for the backend
 WORKDIR /pc-backend
@@ -26,7 +26,7 @@ WORKDIR /pc-backend
 COPY --from=build /pc-backend/dist /pc-backend/dist
 
 # Copy the package.json and package-lock.json for the production environment
-COPY pc-backend/product-comparison/package*.json ./
+COPY package*.json ./
 
 # Install production dependencies
 RUN npm install --only=production
