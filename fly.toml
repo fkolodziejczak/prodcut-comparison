@@ -1,0 +1,36 @@
+# Fly.io application configuration
+
+app = "your-app-name"  # Change this to the name of your app on Fly.io
+
+# Define the Dockerfile
+[build]
+  dockerfile = "Dockerfile"  # Make sure this is the path to your Dockerfile in the root
+
+# Set environment variables (if any)
+[env]
+  BACKEND_URL = "http://localhost:3003"  # The URL your frontend can use to access the backend API
+
+# Set the ports for the services
+[experimental]
+  auto_restart = true
+
+# Define the services
+[[services]]
+  # Frontend (Nginx) service - this serves the Angular app
+  internal_port = 80  # Nginx is listening on port 80
+  protocol = "tcp"
+
+  # Expose port 80 for the frontend (Nginx)
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80  # The port Fly.io will expose for the frontend
+
+[[services]]
+  # Backend (Node.js) service - this runs your NestJS app
+  internal_port = 3003  # NestJS app is listening on port 3003
+  protocol = "tcp"
+
+  # Expose port 3003 for the backend (Node.js)
+  [[services.ports]]
+    handlers = ["http"]
+    port = 3003  # The port Fly.io will expose for the backend API
