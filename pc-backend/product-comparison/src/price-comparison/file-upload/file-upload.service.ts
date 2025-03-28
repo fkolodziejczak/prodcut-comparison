@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as XLSX from 'xlsx-js-style';
 import * as path from 'path';
+import fs from 'fs';
 
 @Injectable()
 export class FileUploadService {
@@ -122,7 +123,15 @@ export class FileUploadService {
 
     XLSX.utils.book_append_sheet(wb, ws, 'Baza produktów PGS');
 
-    const filePath = path.join(process.cwd(), 'public', 'baza_pgs.xlsx');
+    const fs = require('fs');
+    const path = require('path');
+
+    const publicDir = path.join(process.cwd(), 'public');
+    const filePath = path.join(publicDir, 'baza_pgs.xlsx');
+
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir, { recursive: true });
+    }
 
     XLSX.writeFile(wb, filePath);
 
@@ -199,7 +208,15 @@ export class FileUploadService {
 
     XLSX.utils.book_append_sheet(wb_PGS, ws_cheaperCurrentOffer, 'Oferta PGS');
 
-    const filePath = path.join(process.cwd(), 'public', 'porownanie.xlsx');
+    const fs = require('fs');
+    const path = require('path');
+
+    const publicDir = path.join(process.cwd(), 'public');
+    const filePath = path.join(publicDir, 'porownanie.xlsx');
+
+    if (!fs.existsSync(publicDir)) {
+      fs.mkdirSync(publicDir, { recursive: true });
+    }
 
     XLSX.writeFile(wb_PGS, filePath);
 

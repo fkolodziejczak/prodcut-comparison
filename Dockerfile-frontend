@@ -1,0 +1,19 @@
+FROM node:22 as build
+
+WORKDIR /pc-frontend
+
+COPY pc-frontend/package*.json ./
+
+RUN npm install
+
+RUN npm install -g @angular/cli
+
+COPY pc-frontend .
+
+RUN ng build --configuration=production
+
+FROM nginx:latest
+
+COPY --from=build /pc-frontend/dist/product-comparison/browser /usr/share/nginx/html
+
+EXPOSE 80

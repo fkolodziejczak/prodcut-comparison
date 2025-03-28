@@ -12,6 +12,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { FileUploadService } from './file-upload/file-upload.service';
 import { Response } from 'express';
 import * as path from 'node:path';
+import fs from 'fs';
 
 @Controller('price-comparison')
 export class PriceComparisonController {
